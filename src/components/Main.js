@@ -10,31 +10,34 @@ function Main(props) {
     const [userAvatar, setUserAvatar] = React.useState('')
     const [cards, setCards] = React.useState([])
 
-    React.useEffect(() => {
-        api.getInitialCards()
-        .then((data) => {
+    React.useEffect(() => { 
+        api.getInitialCards() 
+        .then((data) => { 
             setCards(data)
         })
         .catch((err) => {
             console.log(err);
         });
-        api.getUserData()
-        .then((data) => {
-            setUserName(data.name);
-            setUserDescription(data.about);
-            setUserAvatar(data.avatar);
+    }, []); 
+ 
+    React.useEffect(() => { 
+        api.getUserData() 
+        .then((data) => { 
+            setUserName(data.name); 
+            setUserDescription(data.about); 
+            setUserAvatar(data.avatar); 
         })
         .catch((err) => {
             console.log(err);
         });
-    }, []);
+    }, []); 
 
     return (
         <main className="content">
         <section className="profile">
             <div className="profile__block">
               <div className="profile__avatar-container">
-                <img style={{ backgroundImage: `url(${userAvatar})`}} className="profile__avatar"/>
+                <img src={userAvatar} alt="аватар" className="profile__avatar"/>
                 <div className="profile__avatar-edit" onClick={props.onEditAvatar}></div>
               </div>
                 <div className="profile__info">

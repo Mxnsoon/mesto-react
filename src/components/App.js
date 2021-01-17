@@ -8,17 +8,17 @@ import ImagePopup from '../components/ImagePopup';
 
 function App() {
 
-  const [isEditProfilePopupOpen, setIsEditprofilePopupOpen] = React.useState(false)
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false)
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false)
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false)
-  const [selectedCard, setSelectedCard] = React.useState('')
+  const [selectedCard, setSelectedCard] = React.useState({ name: '', link: '' })
 
   const handleEditAvatarClick = () => {
     setIsEditAvatarPopupOpen(true)
   }
 
   const handleEditProfileClick = () => {
-    setIsEditprofilePopupOpen(true)
+    setIsEditProfilePopupOpen(true)
   }
 
   const handleAddPlaceClick = () => {
@@ -31,9 +31,9 @@ function App() {
 
   const closeAllPopups = () => {
     setIsAddPlacePopupOpen(false)
-    setIsEditprofilePopupOpen(false)
+    setIsEditProfilePopupOpen(false)
     setIsEditAvatarPopupOpen(false)
-    setSelectedCard(false)
+    setSelectedCard({ name: '', link: '' })
   }
   return (
     <div className="page">
@@ -54,9 +54,9 @@ function App() {
     onClose={closeAllPopups}>
       <div>
       <input type="text" id="popup__field_name" className="popup__field popup__field_name" minLength="2" maxLength="40" required/>
-      <span span className='popup__field_error popup__field_name_error'></span>
+      <span className='popup__field_error popup__field_name_error'></span>
       <input type="text" id="popup__field_text" className="popup__field popup__field_text" minLength="2" maxLength="200" required/>
-      <span span className='popup__field_error popup__field_text_error'></span>
+      <span className='popup__field_error popup__field_text_error'></span>
       </div>
     </PopupWithForm>
     <PopupWithForm
@@ -67,9 +67,9 @@ function App() {
     onClose={closeAllPopups}>
       <div>
       <input type="text" id="popup__field_mesto-name" className="popup__field popup__field_mesto-name" placeholder="Название" minLength="1" maxLength="30" required/>
-      <span span className='popup__field_error popup__field_mesto-name_error'></span>
+      <span className='popup__field_error popup__field_mesto-name_error'></span>
       <input type="url" id="popup__field_mesto-text" className="popup__field popup__field_mesto-text" placeholder="Ссылка на картинку" required/>
-      <span span className='popup__field_error popup__field_mesto-text_error'></span>
+      <span className='popup__field_error popup__field_mesto-text_error'></span>
       </div>
     </PopupWithForm>
     <PopupWithForm
@@ -80,7 +80,7 @@ function App() {
     onClose={closeAllPopups}>
       <div>
       <input type="url" id="popup__field_avatar" className="popup__field popup__field_avatar" placeholder="Ссылка на картинку" required/>
-     <span span className="popup__field_error popup__field_avatar_error"></span>
+     <span className="popup__field_error popup__field_avatar_error"></span>
       </div>
     </PopupWithForm>
     <PopupWithForm
