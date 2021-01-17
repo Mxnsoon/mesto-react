@@ -1,10 +1,12 @@
+import React from 'react';
+
 function Card(props) {
     function handleCardClick(){
         props.onCardClick(props.card)
     }
 
     return (
-        <li class="element__group">
+        <li className="element__group">
             <button className="element__delete"></button>
             <img src={props.card.link} alt={props.card.name} className="element__image" onClick={handleCardClick}/>
             <div className="element__all">

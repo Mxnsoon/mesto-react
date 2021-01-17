@@ -1,6 +1,8 @@
 import React from 'react';
 import Card from './Card';
-import { api } from '../utils/Api';
+import { api } from '../utils/api';
+
+
 
 function Main(props) {
     const [userName, setUserName] = React.useState('')
@@ -13,15 +15,18 @@ function Main(props) {
         .then((data) => {
             setCards(data)
         })
-    }, []);
-
-    React.useEffect(() => {
+        .catch((err) => {
+            console.log(err);
+        });
         api.getUserData()
         .then((data) => {
             setUserName(data.name);
             setUserDescription(data.about);
             setUserAvatar(data.avatar);
         })
+        .catch((err) => {
+            console.log(err);
+        });
     }, []);
 
     return (

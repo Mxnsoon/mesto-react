@@ -6,12 +6,12 @@ import PopupWithForm from './PopupWithForm';
 import React from 'react';
 import ImagePopup from '../components/ImagePopup';
 
-function App(props) {
+function App() {
 
   const [isEditProfilePopupOpen, setIsEditprofilePopupOpen] = React.useState(false)
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false)
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false)
-  const [selectedCard, setSelectedCard] = React.useState(false)
+  const [selectedCard, setSelectedCard] = React.useState('')
 
   const handleEditAvatarClick = () => {
     setIsEditAvatarPopupOpen(true)
@@ -53,10 +53,10 @@ function App(props) {
     isOpen={isEditProfilePopupOpen}
     onClose={closeAllPopups}>
       <div>
-      <input type="text" id="popup__field_name" className="popup__field popup__field_name" minlength="2" maxlength="40" required/>
-      <span span class='popup__field_error popup__field_name_error'></span>
-      <input type="text" id="popup__field_text" className="popup__field popup__field_text" minlength="2" maxlength="200" required/>
-      <span span class='popup__field_error popup__field_text_error'></span>
+      <input type="text" id="popup__field_name" className="popup__field popup__field_name" minLength="2" maxLength="40" required/>
+      <span span className='popup__field_error popup__field_name_error'></span>
+      <input type="text" id="popup__field_text" className="popup__field popup__field_text" minLength="2" maxLength="200" required/>
+      <span span className='popup__field_error popup__field_text_error'></span>
       </div>
     </PopupWithForm>
     <PopupWithForm
@@ -66,10 +66,10 @@ function App(props) {
     isOpen={isAddPlacePopupOpen}
     onClose={closeAllPopups}>
       <div>
-      <input type="text" id="popup__field_mesto-name" className="popup__field popup__field_mesto-name" placeholder="Название" minlength="1" maxlength="30" required/>
-      <span span class='popup__field_error popup__field_mesto-name_error'></span>
+      <input type="text" id="popup__field_mesto-name" className="popup__field popup__field_mesto-name" placeholder="Название" minLength="1" maxLength="30" required/>
+      <span span className='popup__field_error popup__field_mesto-name_error'></span>
       <input type="url" id="popup__field_mesto-text" className="popup__field popup__field_mesto-text" placeholder="Ссылка на картинку" required/>
-      <span span class='popup__field_error popup__field_mesto-text_error'></span>
+      <span span className='popup__field_error popup__field_mesto-text_error'></span>
       </div>
     </PopupWithForm>
     <PopupWithForm
