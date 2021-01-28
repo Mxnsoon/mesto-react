@@ -85,8 +85,37 @@ export default class Api {
     });
   }
 
-  likeSet({ _id }) {
-    return fetch(`${this._url}/cards/likes/${_id}`, {
+  changeLikeCardStatus(cardId, isLiked) {
+    if (isLiked) {
+      return fetch(`${this._url}/cards/likes/${cardId}`, {
+        method: "PUT",
+        headers: this._headers,
+      }).then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    } else {
+      return fetch(`${this._url}/cards/likes/${cardId}`, {
+        method: "DELETE",
+        headers: this._headers,
+      }).then((res) => {
+        if (res.ok) {
+          return res.json();
+        } return Promise.reject(`Ошибка ${res.status}`);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    }
+  }
+
+  likeSet(id) {
+    return fetch(`${this._url}/cards/likes/${id}`, {
       method: 'PUT',
       headers: this._headers,
     }).then((res) => {
@@ -97,8 +126,8 @@ export default class Api {
     });
   }
 
-  likeRemove({ _id }) {
-    return fetch(`${this._url}/cards/likes/${_id}`, {
+  likeRemove(id) {
+    return fetch(`${this._url}/cards/likes/${id}`, {
       method: 'DELETE',
       headers: this._headers,
     }).then((res) => {
