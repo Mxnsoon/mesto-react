@@ -23,8 +23,8 @@
 ## Инструкции по запуску:
 - Скачать или клонировать репозиторий
 - Установить зависимости при помощи npm `npm i`
-- Запустить в development режиме `react-scripts start`
-- Запустить сборку production-build'a `react-scripts build`
+- Запустить в development режиме `npm start`
+- Запустить сборку production-build'a `npm build`
 
 ## Планы по доработке:
 
